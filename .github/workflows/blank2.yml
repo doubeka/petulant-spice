@@ -1,0 +1,14 @@
+name: Publish
+run-name: Publish ${{ github.event.release.tag_name }}
+
+on:
+  release:
+    types: [ released ]
+  workflow_dispatch:
+
+jobs:
+  publish-public-latest:
+    name: Publish Public (latest)
+    uses: ./.github/workflows/blank.yml
+    with:
+      fromRelease: ${{ github.event.release.tag_name }}
